@@ -1,0 +1,34 @@
+<ion-view view-title="{{$root.const.tab6.header_title}}" >
+    <ion-nav-bar class="bar-my">
+        <ion-nav-back-button class="button button-light" >
+        </ion-nav-back-button>
+        <!--<ion-nav-buttons side="right">
+            <button class="button button-clear button-positive" ng-click="addHaul('addhaul')">新增行程</button>
+        </ion-nav-buttons>-->
+    </ion-nav-bar>
+    <ion-content scroll-event-interval="5">
+        <ion-refresher on-refresh="doRefresh()" pulling-text="下拉更新..." spinner="bubbles"></ion-refresher>
+        <ion-list ng-repeat="haullist_item in haullist" >
+            <ion-item class="item-remove-animate item-icon-right my-item" type="item-text-wrap">
+                <div class="div-my">
+                    <label>{{haullist_item.CZ_DRIVER_NAME}}[{{haullist_item.PLATE_NUMBER}}]</label>
+                    <label class="label-status">{{haullist_item.STATUSNAME}}</label>
+                </div>
+                <div class="div-content">
+                    <p class="p-content" style="padding-top: 10px;">行程编号：{{haullist_item.TG_ID}}</p>
+                    <p class="p-content">创建时间：{{haullist_item.BEGINTIME}}</p>
+                    <p class="p-content">处置时间：{{haullist_item.ENDTIME}}</p>
+                    <p class="p-content">总重(公斤)：{{haullist_item.TOTAL_WEIGHT}}</p>
+                    <p class="p-content">净重(公斤)：{{haullist_item.WEIGHT}}</p>
+                </div>
+                <!--<div class="div-content" ng-if="haullist_item.STATUS == '3'">
+                    <p class="p-content" style="padding-top: 10px;">行程编号：{{haullist_item.TG_ID}}</p>
+                    <p  class="p-content">创建时间：{{haullist_item.BEGINTIME}}</p>
+                    <p  class="p-content">处置时间：{{haullist_item.ENDTIME}}</p>
+                </div>-->
+                <button class="button button-clear button-positive button-my button-ck button-pill" ng-click="goFunc('billlist',{itemId: haullist_item.TG_ID, personId: haullist_item.CZ_DRIVER_ID, personName: haullist_item.CZ_DRIVER_NAME, status: haullist_item.STATUS})">查看详情</button>
+            </ion-item>
+        </ion-list>
+        <ion-infinite-scroll on-infinite="pageRefresh()" ng-if="flag == true" immediate-check="false"  spinner="bubbles"></ion-infinite-scroll>
+    </ion-content>
+</ion-view>

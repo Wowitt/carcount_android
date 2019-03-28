@@ -1,0 +1,17 @@
+<ion-view hide-tabs view-title="历史处置列表" >
+  <ion-nav-bar class="bar-my">
+    <ion-nav-back-button class="button button-light" >
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-content scroll-event-interval="5">
+    <ion-refresher on-refresh="doRefresh()" pulling-text="下拉更新..." spinner="bubbles"></ion-refresher>
+    <ion-list>
+      <ion-item class="item-remove-animate item-icon-right" ng-repeat="deallist_item in deallist" type="item-text-wrap">
+          <p style="float: right; margin-right: -35px">{{deallist_item.boxNum}}箱</p>
+          <h2>{{deallist_item.username}}</h2>
+          <p style="margin-top: 5px">{{deallist_item.dealTime}}</p>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll on-infinite="pageRefresh()" immediate-check="false"  spinner="bubbles"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

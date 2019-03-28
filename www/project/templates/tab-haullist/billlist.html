@@ -1,0 +1,30 @@
+<ion-view hide-tabs view-title="{{$root.const.tab4.header_title}}">
+    <ion-nav-bar class="bar-my">
+        <!--<ion-nav-back-button class="button button-light">
+        </ion-nav-back-button>-->
+        <ion-nav-buttons side="left">
+            <i class="icon ion-ios-arrow-back button button-clear button-positive" ng-click="myGoBack()" title="返回">&nbsp;返回</i>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <i class="button button-clear button-positive" ng-show="ifDisplay" ng-click="addBill('addbill')">新增运单</i>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content scroll-event-interval="5">
+        <ion-refresher on-refresh="doRefresh()" pulling-text="下拉更新..." spinner="bubbles"></ion-refresher>
+        <ion-list ng-repeat="billlist_item in billlist">
+            <ion-item class="item-remove-animate item-icon-right my-item" type="item-text-wrap">
+                <div class="div-my">
+                    <label>{{billlist_item.EN_NAME_CS}}</label>
+                    <label class="label-status">{{billlist_item.STATUSNAME}}</label>
+                </div>
+                <div class="div-content">
+                    <p style="padding-top: 10px;">运单编号：{{billlist_item.TB_ID}}</p>
+                    <p>开始时间：{{billlist_item.BEGINTIME}}</p>
+                    <p>结束时间：{{billlist_item.ENDTIME}}</p>
+                </div>
+                <button class="button button-clear button-positive button-my button-ck button-pill" ng-click="goFunc('addbill',{item:billlist_item,itemId:billlist_item.TB_ID,method:'query'})">查看详情</button>
+            </ion-item>
+        </ion-list>
+        <ion-infinite-scroll on-infinite="pageRefresh()" ng-if="flag == true" immediate-check="false"  spinner="bubbles"></ion-infinite-scroll>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,68 @@
+<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+<ion-tabs ng-if="$root.roleType == '0' || $root.roleType == '4'" class="tabs-icon-top tabs-my {{hideTabs}}">
+
+  <!-- search Tab -->
+  <!-- <ion-tab title="{{$root.const.tab1.tab_title}}" icon-off="ion-ios-search" icon-on="ion-ios-search-strong" href="#/tab/search">
+    <ion-nav-view name="tab-search"></ion-nav-view>
+  </ion-tab> -->
+
+   <!--todolist Tab -->
+  <!-- <ion-tab title="{{$root.const.tab2.tab_title}}" icon-off="ion-ios-albums-outline" icon-on="ion-ios-albums" href="#/tab/todolist">
+    <ion-nav-view name="tab-todolist"></ion-nav-view>
+  </ion-tab> -->
+
+  <ion-tab title="{{$root.const.tab1.tab_title}}" icon-off="ion-ios-albums-outline" icon-on="ion-ios-albums" href="#/tab/dealList">
+    <ion-nav-view name="tab-dealList"></ion-nav-view>
+  </ion-tab>
+
+  <ion-tab title="{{$root.const.tab6.tab_title}}" icon-off="bar-history-off" icon-on="bar-history-on" href="#/tab/dealHistoryList">
+    <ion-nav-view name="tab-dealHistoryList"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Account Tab -->
+  <ion-tab title="{{$root.const.tab2.tab_title}}" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" ng-click="set();">
+    <ion-nav-view name="tab-setting"></ion-nav-view>
+  </ion-tab>
+
+</ion-tabs>
+
+<ion-tabs ng-if="$root.roleType == '1'" class="tabs-icon-top tabs-my {{hideTabs}}">
+
+  <!-- search Tab -->
+  <!-- <ion-tab title="{{$root.const.tab1.tab_title}}" icon-off="ion-ios-search" icon-on="ion-ios-search-strong" href="#/tab/search">
+    <ion-nav-view name="tab-search"></ion-nav-view>
+  </ion-tab> -->
+
+  <!--todolist Tab -->
+  <!-- <ion-tab title="{{$root.const.tab2.tab_title}}" icon-off="ion-ios-albums-outline" icon-on="ion-ios-albums" href="#/tab/todolist">
+    <ion-nav-view name="tab-todolist"></ion-nav-view>
+  </ion-tab> -->
+
+  <!-- todolist Tab -->
+  <ion-tab title="{{$root.const.tab1.tab_title}}" icon-off="bar-business-off" icon-on="bar-business-on" href="#/tab/haullist">
+    <ion-nav-view name="tab-haullist"></ion-nav-view>
+  </ion-tab>
+
+  <ion-tab title="{{$root.const.tab6.tab_title}}" icon-off="bar-history-off" icon-on="bar-history-on" href="#/tab/haulhistorylist">
+    <ion-nav-view name="tab-haulhistorylist"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Account Tab -->
+  <ion-tab title="{{$root.const.tab2.tab_title}}" icon-off="bar-setting-off" icon-on="bar-setting-on" ng-click="set();">
+    <ion-nav-view name="tab-setting"></ion-nav-view>
+  </ion-tab>
+
+</ion-tabs>
+
+<!--<ion-tabs ng-if="$root.roleType == '2'" class="tabs-icon-top tabs-my {{hideTabs}}">-->
+
+  <!--&lt;!&ndash; Account Tab &ndash;&gt;-->
+  <!--<ion-tab title="{{$root.const.tab2.tab_title}}" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/tab/setting">-->
+    <!--<ion-nav-view name="tab-setting"></ion-nav-view>-->
+  <!--</ion-tab>-->
+
+<!--</ion-tabs>-->

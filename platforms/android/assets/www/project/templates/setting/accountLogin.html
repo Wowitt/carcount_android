@@ -1,0 +1,25 @@
+<ion-view hide-tabs view-title="账号登录">
+	<ion-nav-bar class="bar-my">
+	</ion-nav-bar>
+	<ion-content >
+		<div class="list">
+			<label class="item item-input label-border">
+				<span style="width: 35%;">用户名：</span>
+				<input type="text" placeholder="请输入用户名" ng-model="username" id="username"/>
+			</label>
+			<label class="item item-input label-border">
+				<span style="width: 35%;">密码：</span>
+				<input type="password" placeholder="请输入密码" ng-model="pwd" id="pwd"/>
+			</label>
+			<label class="item item-input label-border">
+				<label  style="width: 40%;">车辆管理计划：</label>
+				<button ng-click="init()" style="width:20%">刷新</button>
+				<select id="carPlanId"  ng-init="carPlanName = carPlanNames[0]" ng-model="carPlanName" style="width:50%;" ng-options="item for item in carPlanNames">
+				</select>
+			</label>
+		</div>
+		<div class="padding">
+			<button class="button button-block button-positive button-my" ng-click="login();">登录</button>
+		</div>
+	</ion-content>
+</ion-view>

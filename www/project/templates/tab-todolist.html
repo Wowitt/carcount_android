@@ -1,0 +1,21 @@
+<ion-view  view-title="{{$root.const.tab1.header_title}}" >
+  <ion-nav-bar class="bar-my">
+    <ion-nav-back-button class="button button-light" >
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-content scroll-event-interval="5">
+    <ion-refresher on-refresh="doRefresh()" pulling-text="下拉更新..." spinner="bubbles"></ion-refresher>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="todolist_item in todolist" type="item-text-wrap"  ng-click="goFunc('tab.todolist-detail',{item:todolist_item,itemId:{{todolist_item.id}}})">
+        <img ng-src="{{todolist_item.face}}">
+        <h2>{{todolist_item.name}}</h2>
+        <p>{{todolist_item.lastText}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+        <ion-option-button class="button-assertive" ng-click="remove(todolist_item)">
+          删除
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll on-infinite="pageRefresh()" immediate-check="false"  spinner="bubbles"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,122 @@
+<ion-view view-title="恒天内控车辆扫描">
+    <ion-nav-bar class="bar-my">
+        <ion-nav-buttons side="right">
+            <i class="button button-clear button-positive" ng-click="reset();">清空</i>
+            <!--<i class="button button-clear button-positive" ng-click="logout();">退出</i>-->
+        </ion-nav-buttons>
+        <ion-nav-buttons side="left">
+            <!--<i class="button button-clear button-positive" ng-click="reset();">清空</i>-->
+            <i class="button button-clear button-positive" ng-click="logout();">退出</i>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content >
+        <div style="display:flex;border-bottom:1px solid #d8d8d8;height:40px;">
+            <div style="align-self:center">车辆管理计划:{{carPlanName}}</div>
+        </div>
+        <div style="display:flex;flex-direction:row;justify-content:space-between;border-bottom:1px solid #d8d8d8;height:60px;">
+            <div style="align-self:center">车牌号:{{carone != null && carone.plateNum !=null && carone.plateNum != "" ? carone.plateNum:"请扫描一辆车"}}</div>
+            <button on-touch="uhfone()" on-release="stopuhfone()" class="button button-positive button-my" style="align-self:center">
+                扫描
+            </button>
+        </div>
+        <div style="display:flex;flex-direction:row;justify-content:space-between;border-bottom:1px solid #d8d8d8;height:60px;">
+            <div style="align-self:center;">转场</div>
+            <div style="align-self:center;">
+                <label>场地</label>
+                <select style="width:120px;"  ng-model="funcOneFieldObj.fieldObj"  ng-options="item.NAME for item in fieldList">
+                    <option value="">请选择</option>
+                </select>
+            </div>
+            <button ng-click="changeField()" class="button button-positive button-my" style="align-self:center">
+                转场
+            </button>
+        </div>
+        <div style="display:flex;flex-direction:column;border-bottom:1px solid #d8d8d8;height:110px;">
+            <div style="display:flex;height:50%;justify-content:space-between;">
+                <div style="align-self:center;">占车位</div>
+                <div style="align-self:center;">
+                    <label >场地</label>
+                    <select style="width:120px;" id="carPlanId" ng-model="funcTwoFieldObj.fieldObj"  ng-options="item.NAME for item in fieldList">
+                        <option value="">请选择</option>
+                    </select>
+                </div>
+                <div style="align-self:center;">
+                    <label >车位</label>
+                    <select style="width:120px;"  ng-model="funcTwoFieldObj.parkObj"  ng-options="item.NO for item in funcTwoFieldObj.fieldObj.parkList">
+                        <option value="">请选择</option>
+                    </select>
+                </div>
+            </div>
+            <div style="display:flex;flex-direction:row;justify-content:flex-end;">
+                <button ng-click="updatePark()"  class="button button-positive button-my" style="align-self:center">
+                    占车位
+                </button>
+            </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid #d8d8d8;height:70px;">
+            <div style="align-self:center;">
+                出/回场
+            </div>
+            <div style="align-self:center;">
+                <button ng-click="outField()"  class="button  button-positive button-my" style="align-self:center">
+                    出场
+                </button>
+                <button ng-click="inField()" class="button  button-positive button-my" style="align-self:center">
+                    回厂
+                </button>
+            </div>
+        </div>
+        <div class="list" id="listId">
+            <div >
+                <div ng-repeat="item in codeList" style="margin-left:20px;margin-top:16px;color:#e8e8e8;font-size:30px;">
+                    {{item.plateNum}}
+                </div>
+            </div>
+            <div id="boxId">
+            </div>
+        </div>
+        <div id="caseBlanche" on-touch="uhf()" on-release="stopuhf()">
+            <div ng-show="!ifcheckflag" id="rond">
+                <div id="test"></div>
+                <div id="lack"></div>
+            </div>
+            <div ng-show="ifcheckflag" id="rond" class="rondHalo">
+            </div>
+            <div id="load">
+                <div class="row" id="result">
+                    <p id="resultCount">{{resultCount}}</p><p id="resultUnit">个</p>
+                </div>
+                <p id="typed" ng-show="scannerFlag"></p>
+            </div>
+        </div>
+    </ion-content>
+    <div ng-show="!ifshowdetail" class="bar bar-footer" style="height: 60px;background-size: 0px;margin-bottom: 0px;" id="btnId">
+        <button  class="button button-positive button-my " style="border-radius: 100px 100px 0 0;width: 60%; border: none; left: 20%;height: 60px" ng-click="showdetal()">
+            累计扫描{{resultCount}}辆车
+        </button>
+        <!--<button class="button button-positive button-my " style="border: none;height: 60px"  on-touch="uhf()"-->
+                <!--on-release="stopuhf()">-->
+            <!--扫描-->
+        <!--</button>-->
+        <!--<button ng-show="!scannerFlag" class="button button-positive button-my button-pill" ng-click="uhf()"-->
+                <!--style="width: 60%; border: none; left: 20%;height: 60px">开始扫描-->
+        <!--</button>-->
+        <!--<button ng-show="scannerFlag" class="button button-positive button-my button-pill" ng-click="stopuhf()"-->
+                <!--style="width: 60%; border: none; left: 20%;height: 60px">停止扫描-->
+        <!--</button>-->
+    </div>
+    <div ng-show="ifshowdetail" class="bar bar-footer" style="z-index:100;flex:1;justify-content:center;height: 600px;background-color: rgba(255, 255, 255, 0);margin-bottom: 0px;">
+        <div style="background-color:#e8e8e8;width:90%;">
+            <ion-scroll style="height:550px;">
+                <ion-list>
+                    <ion-item ng-repeat="item in codeList">
+                        <div>{{item.plateNum}} | 发动机号:{{item.engineNum}} | 车架号:{{item.frameNum}}</div>
+                    </ion-item>
+                </ion-list>
+            </ion-scroll>
+        </div>
+        <button ng-click="showdetal()"  class="button button-positive button-my "style="position:fixed;bottom:0px;border-radius: 100px 100px 0 0;width: 60%; border: none; left: 20%;height: 60px">
+            累计扫描{{resultCount}}辆车
+        </button>
+    </div>
+</ion-view>

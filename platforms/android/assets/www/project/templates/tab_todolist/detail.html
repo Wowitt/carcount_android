@@ -1,0 +1,20 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view hide-tabs view-title="{{todolist_item.name}}">
+  <ion-nav-bar class="bar-my">
+    <ion-nav-back-button class="button button-light" >
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-content class="padding">
+    <img ng-src="{{todolist_item.face}}" style="width: 64px; height: 64px">
+    <p>
+      {{todolist_item.lastText}}
+    </p>
+    <button ng-click="mygo()" class="button button-stable">下一级页面</button>
+    <button ng-click="test()" class="button button-calm">访问服务器</button>
+  </ion-content>
+</ion-view>

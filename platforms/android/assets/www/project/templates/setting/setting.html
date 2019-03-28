@@ -1,0 +1,29 @@
+<ion-view view-title="设置">
+	<ion-nav-bar class="bar-my">
+	  <ion-nav-back-button class="button button-light">
+	  </ion-nav-back-button>
+		<ion-nav-buttons  side="right">
+			<i class="button button-clear button-positive" ng-click="exit();">退出</i>
+		</ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-content >
+		<div class="list">
+			<label class="item item-input label-border">
+				用户姓名：{{username}}
+			</label>
+			<label class="item item-input label-border">
+				角色：{{role}}
+			</label>
+			<!--<label class="item item-input" ng-show="showFlag">-->
+				<!--公司名称：{{epName}}-->
+			<!--</label>-->
+			<label class="item item-input label-border">
+				公司名称：{{epName}}
+			</label>
+			<!--<label class="item item-divider" ng-show="showFlag"></label>-->
+			<!--<label class="item item-input label-border" ng-show="showFlag" ng-click="checkHistory();">-->
+				<!--查看历史处置记录<img src="project/res/img/queryHistory.png" class="img">-->
+			<!--</label>-->
+		</div>
+	</ion-content>
+</ion-view>

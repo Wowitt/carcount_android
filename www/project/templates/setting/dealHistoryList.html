@@ -1,0 +1,22 @@
+<ion-view view-title="历史处置列表" >
+  <ion-nav-bar class="bar-my">
+      <ion-nav-back-button class="button button-light" >
+      </ion-nav-back-button>
+      <!--<ion-nav-buttons side="left">-->
+          <!--<i class="icon ion-ios-arrow-back button button-clear button-positive" ng-click="myGoBack();">返回</i>-->
+      <!--</ion-nav-buttons>-->
+  </ion-nav-bar>
+  <ion-content scroll-event-interval="5">
+    <ion-refresher on-refresh="doRefresh()" pulling-text="下拉更新..." spinner="bubbles"></ion-refresher>
+    <ion-list>
+      <ion-item class="item-icon-right my-item" ng-repeat="deallist_item in deallist" type="item-text-wrap">
+          <div>
+              <label style="float: right;">{{deallist_item.boxNum}}箱</label>
+              <label>{{deallist_item.username}}</label>
+          </div>
+          <span style="margin-top: 4px;">{{deallist_item.dealTime}}</span>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll on-infinite="pageRefresh()" ng-if="flag == true" immediate-check="false"  spinner="bubbles"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

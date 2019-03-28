@@ -1,0 +1,17 @@
+<ion-view>
+  <ion-header-bar class="bar-my">
+    <div style="width:100%;overflow-x:scroll;position: absolute; height: 32px" id="tab-search-header-tab">
+      <div style="text-align: center;position: absolute;width: 30%;left:{{$index*30}}%" class="tab_default" ng-repeat="d in tabNames" ng-click="activeSlide($index)" ng-class="slectIndex==$index ? 'tab_select' : '' ">
+       {{d}}
+      </div> 
+    </div> 
+  </ion-header-bar>
+  <ion-content has-bouncing="false" class="padding">
+    
+    <ion-slide-box  on-slide-changed="slideChanged(index)" active-slide="slideIndex" does-continue="false" show-pager="false">
+      <ion-slide ng-repeat="p in pages">
+        <div ng-include="p"></div>
+      </ion-slide>
+    </ion-slide-box>
+  </ion-content>
+</ion-view>

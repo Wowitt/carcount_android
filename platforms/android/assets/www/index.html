@@ -1,0 +1,77 @@
+<!--
+created by woody
+date 20170301
+程序入口页面
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>天津危险废物监管平台APP</title>
+    <link rel="manifest" href="manifest.json">
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+    <link href="project/lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="project/css/common.css" rel="stylesheet">
+    <link href="project/lib/buttons/buttons.css" rel="stylesheet">
+    <link href="project/lib/animation/animation.css" media="screen" rel="stylesheet">
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+    <!-- ionic/angularjs js -->
+    <script src="project/lib/ionic/js/ionic.bundle.js"></script>
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="project/lib/ngcordova/ng-cordova.js"></script>
+    <script src="cordova.js"></script>
+    <!-- libs js -->
+    <script src="project/lib/angular-websocket/angular-websocket.min.js"></script>
+    <script src="project/lib/angular-local-storage/angular-local-storage.min.js"></script>
+    <script src="project/lib/jquery/jquery.min.js"></script>
+    <script src="project/lib/localResizeIMG/lrz.bundle.js"></script>
+    <script src="project/lib/animation/typed.js"></script>
+    <script src="project/lib/crypto-js/crypto-js.js"></script>
+    <!-- your app's js -->
+    <script src="project/js/app.js"></script>
+    <script src="project/js/directives/HideTabs.js"></script>
+    <script src="project/js/directives/UploadImg.js"></script>
+    <script src="project/js/services/Init.js"></script>
+    <script src="project/js/services/Alert.js"></script>
+    <script src="project/js/services/Confirm.js"></script>
+    <script src="project/js/services/JumpUtil.js"></script>
+    <script src="project/js/services/LoadUtil.js"></script>
+    <script src="project/js/services/Gis.js"></script>
+    <script src="project/js/services/websocket.js"></script>
+    <script src="project/js/controllers/TabsCtrl.js"></script>
+    <script src="project/js/controllers/SearchCtrl.js"></script>
+    <script src="project/js/controllers/TodoListCtrl.js"></script>
+    <script src="project/js/controllers/TodoListDetailCtrl.js"></script>
+    <script src="project/js/controllers/AccountCtrl.js"></script>
+    <script src="project/js/controllers/setting/LoginCtrl.js"></script>
+    <script src="project/js/controllers/setting/AccountLoginCtrl.js"></script>
+    <script src="project/js/controllers/setting/SettingCtrl.js"></script>
+    <script src="project/js/controllers/dealBill/DealListCtrl.js"></script>
+    <script src="project/js/controllers/dealBill/DealAddCtrl.js"></script>
+    <script src="project/js/controllers/setting/DealHistoryListCtrl.js"></script>
+	<script src="project/js/controllers/haul/HaulListCtrl.js"></script>
+    <script src="project/js/controllers/bill/BillListCtrl.js"></script>
+    <script src="project/js/controllers/haul/AddHaulCtrl.js"></script>
+    <script src="project/js/controllers/bill/AddBillCtrl.js"></script>
+    <script src="project/js/controllers/haul/HaulHistoryListCtrl.js"></script>
+    <script src="project/js/controllers/car/CarcountCtrl.js"></script>
+  </head>
+  <body ng-app="myapp">
+    <!--
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>

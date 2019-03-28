@@ -1,0 +1,44 @@
+<ion-view view-title="处置废物">
+    <ion-nav-bar class="bar-my">
+        <ion-nav-buttons side="left">
+            <i class="icon ion-ios-arrow-back button button-clear button-positive" ng-click="myGoBack()" title="返回">&nbsp;返回</i>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <i class="button button-clear button-positive" ng-click="deal();">处置</i>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content id="contentId">
+        <div class="list" id="listId">
+            <label class="item item-divider">单位信息：</label>
+            <label class="item item-input label-border">用户姓名：{{username}}</label>
+            <!--<div style="height: 3px; background-color: #dddddd;"></div>-->
+            <label class="item item-input">公司名称：{{epName}}</label>
+            <!--<div style="height: 3px; background-color: #dddddd;"></div>-->
+
+            <div id="boxId">
+                <label class="item item-divider">箱子信息：</label>
+            </div>
+        </div>
+        <div id="caseBlanche">
+            <div id="rond">
+                <div id="test"></div>
+                <div id="lack"></div>
+            </div>
+            <div id="load">
+                <p id="typed" ng-show="scannerFlag"></p>
+                <div class="row" ng-hide="scannerFlag" id="result">
+                    <p id="resultCount">{{resultCount}}</p><p id="resultUnit">个</p>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <!--<ion-footer-bar style="background-color:darkorange">-->
+    <!--<div class="title" ng-click="scanning();">扫描</div>-->
+    <!--</ion-footer-bar>-->
+    <div class="bar bar-footer" style="height: 60px;background-size: 0px;margin-bottom: 38px;" id="btnId">
+        <button class="button button-positive button-my button-pill" on-touch="uhf()"
+                on-release="stopuhf()"
+                style="width: 60%; border: none; left: 20%;height: 60px">扫描周转箱
+        </button>
+    </div>
+</ion-view>

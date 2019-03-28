@@ -1,0 +1,32 @@
+<ion-view hide-tabs view-title="{{$root.const.tab3.header_title}}">
+    <ion-nav-bar class="bar-my">
+        <!--<ion-nav-back-button class="button button-light" >
+        </ion-nav-back-button>-->
+        <ion-nav-buttons side="left">
+            <i class="icon ion-ios-arrow-back button button-clear button-positive" ng-click="myGoBack()" title="返回">&nbsp;返回</i>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <i class="button button-clear button-positive" ng-click="confirm()">确定</i>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+        <div class="list">
+            <label class="item item-divider">验证信息</label>
+            <label class="item item-input">处置单位：{{EN_NAME_CZ}}</label>
+            <!--<div style="height: 3px; background-color: #dddddd;"></div>-->
+            <label class="item item-divider">用户信息</label>
+            <label class="item item-input label-border">用户编号：{{CZ_DRIVER_ID}}</label>
+            <!--<div style="height: 3px; background-color: #dddddd;"></div>-->
+            <label class="item item-input">用户名称：{{CZ_DRIVER_NAME}}</label>
+            <!--<div style="height: 3px; background-color: #dddddd;"></div>-->
+            <label class="item item-divider">车辆信息</label>
+            <label class="item item-input label-border">车辆类型：{{car.CarType}}</label>
+            <!--<div style="height: 3px; background-color: #dddddd;"></div>-->
+            <label class="item item-input label-border">车牌号：{{car.PLATE_NUMBER}}</label>
+            <!--<div style="height: 2px; background-color: #dddddd;"></div>-->
+        </div>
+    </ion-content>
+    <ion-footer-bar style="background-size: 0px; height: auto;">
+        <button class="button button-positive button-pill button-my" ng-click="scan()" style="align-content: center; left: 20%; width: 60%; height: 60px; line-height: 60px;">请扫描车辆二维码</button>
+    </ion-footer-bar>
+</ion-view>

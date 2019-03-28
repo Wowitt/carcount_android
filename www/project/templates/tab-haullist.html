@@ -1,0 +1,93 @@
+<ion-view view-title="{{$root.const.tab1.header_title}}" >
+    <ion-nav-bar class="bar-my">
+        <ion-nav-back-button class="button button-light" >
+        </ion-nav-back-button>
+        <!--<ion-nav-buttons side="right">
+            <button class="button button-clear button-positive" ng-click="addHaul('addhaul')">新增行程</button>
+        </ion-nav-buttons>-->
+    </ion-nav-bar>
+    <ion-content scroll-event-interval="5">
+        <!--<ion-refresher on-refresh="doRefresh()" pulling-text="下拉更新..." spinner="bubbles"></ion-refresher>-->
+        <!--<ion-list ng-if="haullist.length > 0" ng-repeat="haullist_item in haullist" >
+            <ion-item class="item-remove-animate item-icon-right my-item" type="item-text-wrap">
+                &lt;!&ndash;<div class="div-my">
+                    <label>{{haullist_item.CZ_DRIVER_NAME}}[{{haullist_item.PLATE_NUMBER}}]</label>
+                    <label class="label-status">{{haullist_item.STATUSNAME}}</label>
+                </div>&ndash;&gt;
+
+                &lt;!&ndash;<button class="button button-clear button-positive button-my button-ck" ng-click="goFunc('billlist',{itemId: haullist_item.TG_ID, personId: haullist_item.CZ_DRIVER_ID, personName: haullist_item.CZ_DRIVER_NAME, status: haullist_item.STATUS})">查看详情</button>
+                <button class="button button-clear button-positive button-my button-ck" ng-if="haullist_item.ifExist == '0' && haullist_item.STATUS != '5'" ng-click="fillWeight(haullist_item)" style="margin-right: 5px;">填写重量</button>
+                <button class="button button-clear button-positive button-my button-ck" ng-if="haullist_item.ifExist == '1'" ng-click="delete(haullist_item)" style="margin-right: 5px;">删除</button>&ndash;&gt;
+            </ion-item>
+        </ion-list>-->
+        <ion-list ng-if="haul != undefined && haul != null && haul != ''">
+            <div class="div-tab">
+                <div class="row div-bottom">
+                    <label class="line-height label-pb">行程编号：</label>
+                    <input type="text" class="line-height input-padding input-bottom" value="{{haul.TG_ID}}"/>
+                </div>
+                <div class="row div-bottom">
+                    <label class="line-height label-pb">创建时间：</label>
+                    <input type="text" class="line-height input-padding input-bottom" value="{{haul.BEGINTIME}}"/>
+                </div>
+                <div class="row div-bottom">
+                    <label class="line-height label-pb">处置时间：</label>
+                    <input type="text" class="line-height input-padding input-bottom" value="{{haul.ENDTIME}}"/>
+                </div>
+                <div class="row div-bottom">
+                    <p class="p-wpm">
+                        <label class="line-height label-pb">总重(公斤)：</label>
+                        <input type="text" class="line-height input-padding input-width input-bottom" value="{{haul.TOTAL_WEIGHT}}"/>
+                    </p>
+                    <p class="p-wpm" style="padding-left: 24px;">
+                        <label class="line-height label-pb">净重(公斤)：</label>
+                        <input type="text" class="line-height input-padding input-width input-bottom" value="{{haul.WEIGHT}}"/>
+                    </p>
+                </div>
+            </div>
+            <!--<div class="div-tab" ng-if="haul.STATUS == '3'"  style="background-color: #ffffff;">
+                <div>
+                    <label class="" style="line-height: 48px;">行程编号：</label>
+                    <input type="text" value="{{haul.TG_ID}}" style="padding: 0px; line-height: 48px;"/>
+                </div>
+                <div>
+                    <label class="" style="line-height: 48px;">创建时间：</label>
+                    <input type="text" value="{{haul.BEGINTIME}}" style="padding: 0px; line-height: 48px;"/>
+                </div>
+                <div>
+                    <label class="" style="line-height: 48px;">处置时间：</label>
+                    <input type="text" value="{{haul.ENDTIME}}" style="padding: 0px; line-height: 48px;"/>
+                </div>
+            </div>-->
+            <div class="list div-btb">
+                <div class="div-mb div-pb">
+                    <p style="margin-bottom: 0px;">
+                        <label class="label-pb"><b>医院列表</b></label>
+                        <label class="label-pr"><b>{{haul.hospitalNum}}家</b></label>
+                    </p>
+                </div>
+                <!--<div style="height: 1px; background: #ffffff; width: 100%; margin: 0px 24px;"></div>-->
+                <div class="div-mb div-p">
+                    <p class="p-size" ng-repeat="hospital in haul.hospitalList">{{hospital.EN_NAME_CS}}</p>
+                </div>
+            </div>
+        </ion-list>
+        <ion-list ng-if="haul == undefined || haul == null || haul == ''">
+            <div id="circle" ng-click="addHaul('addhaul')">
+                <img src="project/res/img/start.png" class="img-pp">
+                <label class="label-cpf">开始行程</label>
+            </div>
+        </ion-list>
+        <ion-infinite-scroll on-infinite="pageRefresh()" ng-if="flag == true" immediate-check="false"  spinner="bubbles"></ion-infinite-scroll>
+    </ion-content>
+    <ion-footer-bar ng-if="haul != undefined && haul != null && haul != ''" class="footer-hb">
+        <div class="div-mt" ng-if="haul.ifExist == '0'">
+            <button class="button button-clear button-positive button-my button-pill btn-pm" ng-click="goFunc('billlist',{itemId: haul.TG_ID, personId: haul.CZ_DRIVER_ID, personName: haul.CZ_DRIVER_NAME, status: haul.STATUS})">查看运单</button>
+            <button class="button button-clear button-positive btn-bf button-pill btn-pm" ng-click="fillWeight(haul)">填写重量</button>
+        </div>
+        <div class="div-mt" ng-if="haul.ifExist == '1'">
+            <button class="button button-clear button-positive button-my button-pill btn-pm" ng-click="goFunc('billlist',{itemId: haul.TG_ID, personId: haul.CZ_DRIVER_ID, personName: haul.CZ_DRIVER_NAME, status: haul.STATUS})">查看运单</button>
+            <button class="button button-clear button-positive btn-bf button-pill btn-pm" ng-click="fillWeight(haul)" disabled>填写重量</button>
+        </div>
+    </ion-footer-bar>
+</ion-view>

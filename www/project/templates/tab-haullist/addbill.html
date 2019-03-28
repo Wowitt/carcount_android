@@ -1,0 +1,72 @@
+<ion-view hide-tabs view-title="{{$root.const.tab5.header_title}}">
+    <ion-nav-bar class="bar-my">
+        <!--<ion-nav-back-button class="button button-light" >
+        </ion-nav-back-button>-->
+        <ion-nav-buttons side="left">
+            <i class="icon ion-ios-arrow-back button button-clear button-positive" ng-click="myGoBack()" title="返回">&nbsp;返回</i>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <i class="button button-clear button-positive" ng-show="visible" ng-click="confirm()">确认</i>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+        <div class="div-tab div-padding">
+            <div class="div-pbm">
+                <label class="label-line">人员名称：</label>
+                <input type="text" value="{{user.NAME}}" class="input-padding input-line input-bottom"/>
+            </div>
+            <div class="div-pt div-pbm">
+                <label class="label-line">所属机构：</label>
+                <input type="text" value="{{user.EP_NAME}}" class="input-padding input-line input-bottom"/>
+            </div>
+        </div>
+        <div id="content_id"></div>
+        <div id="caseBlanche">
+            <div id="rond">
+                <div id="test"></div>
+                <div id="lack"></div>
+            </div>
+            <div id="load">
+                <p id="typed" ng-show="scannerFlag"></p>
+                <div class="row" ng-hide="scannerFlag" id="result">
+                    <p id="resultCount">{{result}}</p><p id="resultUnit">{{unit}}</p>
+                </div>
+            </div>
+        </div>
+            <!--<div class="list">
+                <label class="item item-divider">医疗机构人员信息</label>
+                <label class="item item-input label-border">人员编号：{{user.CS_PERSON_ID}}</label>
+                <label class="item item-input label-border">人员名称：{{user.CS_PERSON_NAME}}</label>
+                &lt;!&ndash;<div style="height: 3px; background-color: #dddddd;"></div>&ndash;&gt;
+                <label class="item item-input">所属机构：{{user.EN_NAME_CS}}</label>
+                &lt;!&ndash;<div style="height: 3px; background-color: #dddddd;"></div>&ndash;&gt;
+                <div ng-if="bill.COUNT != undefined && bill.COUNT != null">
+                    <label class="item item-divider">箱子编号列表</label>
+                    <label class="item item-divider" style="float: right;  margin: -38px 0px; font-weight: normal">{{bill.COUNT}}个</label>
+                </div>
+                <div ng-if="bill.COUNT == undefined || boxList == null">
+                    <label class="item item-divider">箱子编号列表</label>
+                    <label class="item item-divider" ng-if="bill.COUNT == '0'" style="float: right; margin: -38px 0px; font-weight: normal"></label>
+                </div>
+                &lt;!&ndash;圆形提示扫描中，当扫描完之后，显示个数&ndash;&gt;
+
+            </div>-->
+    </ion-content>
+    <ion-footer-bar id="btn_id" class="bar bar-footer btnPd bdvh" style="height: auto; background-size: 0px;"  ng-show="visible">
+        <div class="bdvcss">
+            <button class="button button-pill button-jumbo bw ftl buttionFont confirmButton" on-touch="startuhf()" on-release="stopuhf()">扫周转箱</button>
+            <button class="button button-pill button-jumbo bw crl buttionFont waitButton" ng-click="saveWeight()">填写重量</button>
+            <div class="yx">
+            </div>
+            <div ng-click="scanPersonCode()">
+                <img class="whbf buttionFont" style="" src="project/res/img/scan.png"/>
+                <button class="button button-circle button-action button-jumbo whr buttionFont">扫人员</button>
+            </div>
+        </div>
+    </ion-footer-bar>
+    <!--<ion-footer-bar ng-show="visible">
+        <button class="button button-clear button-positive button-my" style="width: 48.5%; border: none; margin-top: 2px;" ng-click="scanPerson()">扫描医疗人员卡</button>
+        <button class="button button-clear button-positive" ng-click="show();" ng-hide="true">show</button>
+        <button class="button button-clear button-positive button-my" on-touch="startuhf()" on-release="stopuhf()" style="width: 48.5%; border: none; margin-top: 2px;">扫描箱子芯片卡</button>
+    </ion-footer-bar>-->
+</ion-view>

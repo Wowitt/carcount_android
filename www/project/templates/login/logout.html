@@ -1,0 +1,25 @@
+<ion-view view-title="设置">
+	<ion-nav-bar class="bar-my">
+	  <ion-nav-back-button class="button button-light">
+	  </ion-nav-back-button>
+		<ion-nav-buttons  side="right">
+			<button class="button button-clear button-positive" style="color:darkorange" ng-click="exit();">退出</button>
+		</ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-content >
+		<div class="list">
+			<label class="item item-input">
+				<span class="input-label">用户姓名：</span>
+			</label>
+			<label class="item item-input">
+				<span class="input-label">角色：</span>
+			</label>
+			<label class="item item-input">
+				<span class="input-label">公司名称：</span>
+			</label>
+			<label class="item item-input" ng-show="showFlag" ng-click="checkHistory();">
+				<span class="input-label" style="color: darkorange">查看历史处置记录</span>
+			</label>
+		</div>
+	</ion-content>
+</ion-view>
