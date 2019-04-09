@@ -289,7 +289,8 @@ myapp.run(['$ionicPlatform', '$state', '$rootScope', 'localStorageService', '$io
         }, 101);
 
 //        $rootScope.baseUrl = 'http://60.30.64.249:7080/rd_2nd';
-        $rootScope.baseUrl = 'http://192.168.31.233:9002/api';
+//        $rootScope.baseUrl = 'http://192.168.31.233:9002/api';
+        $rootScope.baseUrl = 'http://39.96.42.117:9000/api';
         $rootScope.baseUrlEos = '';
         $rootScope.baseUrlPath = '';
         $rootScope.hideTabs = '';

@@ -183,6 +183,38 @@ angular.module('myapp').controller('CarcountCtrl',['$scope','Alert','$state','In
 
     }
 
+    $scope.shareCar = function(){
+        if($scope.carone == null || JSON.stringify($scope.carone) == "{}" || $scope.carone.id == null || $scope.carone.id == ""){
+            Alert.myToastBottom({mess: "请扫描一辆车信息", height: -160});
+            return false;
+        }
+        var tmp = {}
+        tmp.content = '该车将提交到预提共享区' ;
+        Confirm.confirmTemplate(tmp,function(res1){
+            if(res1) {
+                LoadUtil.showLoad('加载中');
+                var param = {}
+                param.carId = $scope.carone.carId
+                param.plateNum = $scope.carone.plateNum
+                param.fieldId = $scope.funcOneFieldObj.fieldObj.ID
+                param.fieldName = $scope.funcOneFieldObj.fieldObj.NAME
+                Init.iwbhttp('/car/saveCarShare',  param, function(data,header,config,status){
+                    if(data.resFlag == '0'){
+                        Alert.myToastBottom({mess: data.msg, height: -160});
+                    }else{
+                        Alert.myToastBottom({mess: data.msg, height: -160});
+                    }
+                    LoadUtil.hideLoad();
+                },function(data,header,config,status){
+                    LoadUtil.hideLoad();
+                    Alert.myToastBottom({mess: "服务器未知异常", height: -160});
+                });
+            } else {
+            }
+        });
+
+    }
+
     $scope.updatePark = function(){
         if($scope.carone == null || JSON.stringify($scope.carone) == "{}" || $scope.carone.id == null || $scope.carone.id == ""){
             Alert.myToastBottom({mess: "请扫描一辆车信息", height: -160});
@@ -270,7 +302,6 @@ angular.module('myapp').controller('CarcountCtrl',['$scope','Alert','$state','In
                 $scope.codeList[index].frameNum = data.car.FRAME_NUMBER;
                 $scope.codeList[index].fieldId = data.car.FIELD_ID;
                 $scope.codeList[index].fieldName = data.car.FIELD_NAME;
-                $scope.waitFlag = false;
 //                var tmp = {}
 //                tmp.carId = data.car.ID;
 //                tmp.plateNum = data.car.PLATE_NUM;
@@ -281,6 +312,7 @@ angular.module('myapp').controller('CarcountCtrl',['$scope','Alert','$state','In
             }else{
                 Alert.myToastBottom({mess: data.msg, height: -160});
             }
+            $scope.waitFlag = false;
             LoadUtil.hideLoad();
         },function(data,header,config,status){
             Alert.myToastBottom({mess: "服务器未知异常", height: -160});
@@ -400,9 +432,8 @@ angular.module('myapp').controller('CarcountCtrl',['$scope','Alert','$state','In
                         }
                     }
                     if(flag && !$scope.waitFlag){
-                        $scope.codeList[index] = new Object();
-                        $scope.codeList[index].id = $scope.cards[i];
-
+//                        $scope.codeList[index] = new Object();
+//                        $scope.codeList[index].id = $scope.cards[i];
                         $scope.waitFlag = true;
                         $scope.deal($scope.cards[i],index)
                     }
